@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Calculator</title>
+  <link rel="stylesheet" href="./P1_calculator.css">
+</head>
+<body>
+
+  <div class="calculator"> 
+    <input type="text" id="display" disabled />
+    <div class="button_cotent">
+      <button class="buttonop howv" onclick="clearDisplay()">C</button>
+       <button class="buttonop howv" onclick="appendValue('+')">+</button>
+      <button class="buttonop howv" onclick="appendValue('/')">/</button>
+      <button class="buttonop howv" onclick="appendValue('*')">*</button>
+
+      <button class="button" onclick="appendValue('7')">7</button>
+      <button class="button" onclick="appendValue('8')">8</button>
+      <button class="button" onclick="appendValue('9')">9</button>
+      <button class="buttonop howv" onclick="appendValue('-')">-</button>
+
+      <button class="button" onclick="appendValue('4')">4</button>
+      <button class="button" onclick="appendValue('5')">5</button>
+      <button class="button" onclick="appendValue('6')">6</button>
+           <button class="buttonop howv" onclick="backspace()">←</button>
+
+      <button class="button" onclick="appendValue('1')">1</button>
+      <button class="button" onclick="appendValue('2')">2</button>
+      <button class="button" onclick="appendValue('3')">3</button>
+      <button class="buttonop howv" onclick="calculateResult()">=</button>
+
+      <button class="button" onclick="appendValue('0')">0</button>
+    <button class="buttonop howv" onclick="appendValue('.')">.</button>
+
+    </div>
+  </div>
+
+  <script>
+    let displayValue = "";
+
+    function appendValue(val) {
+      displayValue += val;
+      document.getElementById('display').value = displayValue;
+    }
+
+    function clearDisplay() {
+      displayValue = "";
+      document.getElementById('display').value = "";
+    }
+
+    function backspace() {
+      displayValue = displayValue.slice(0, -1);
+      document.getElementById('display').value = displayValue;
+    }
+
+    function calculateResult() {
+      try {
+        displayValue = eval(displayValue).toString();
+        document.getElementById('display').value = displayValue;
+      } catch (e) {
+        document.getElementById('display').value = "Error";
+        displayValue = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
